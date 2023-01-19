@@ -26,3 +26,9 @@
 #sec-skills .grid img{
     height: 100%;
 }
+@media screen and (max-width: 720px){
+    #sec-skills .grid{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

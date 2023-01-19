@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner:wght@600&family=Kdam+Thmor+Pro&family=Oswald&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: azure;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  background: #111;
+
+}
+/* Header */
+header{
+  width: 100vw;
+  position: fixed;
+}
+header .navbar{
+  width: 100%;
+  padding: 0px 5%;
+}
+header .navbar ul{
+  display: flex;
+	justify-content: flex-end;
+	align-items: stretch;
+}
+header .navbar ul li{
+  list-style: none;
+  position: relative;
+  margin-left: 25px;
+  transition: 0.5s all ease-in-out;
+}
+header .navbar ul li a{
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px 25px;
+}
+header .navbar ul li:hover,
+header .navbar ul li.active{
+  font-weight: 900;
+}
+/* Container */
+#container{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+section{
+  z-index: -1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  padding-top: 85px;
+  scroll-snap-align: start;
+  height: 100vh;
+  width: 100vw
+}
+img{
+  height: 55px;
+}
+h2{
+  font-size: 3rem;
+  color: crimson;
+}
+.hidden{
+  opacity: 1;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+  transition-delay: 1s;
+}
+.show{
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+/* Scrollbar */
+::-webkit-scrollbar{
+  background: transparent;
+  width: 8px;
+}
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-button{
+  display: none;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb{
+  background: #0c7cbd;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track-piece{
+  background: #333;
+}

@@ -1,0 +1,98 @@
+#sec-home{
+    border: 2px dashed coral;
+    flex-direction: column;
+    position: relative;
+}
+#sec-home .image{
+    clip-path: circle();
+    height: 0;
+    position: relative;
+    animation: sec-home-Image 1s cubic-bezier(0.93, 0.11, 0, 0.93) 0.7s 1 normal both,
+    sec-home-ToLeft 1s ease-in-out 3.5s normal both;
+}
+#sec-home .image img{
+    height: inherit;
+    margin: auto;
+}
+#sec-home span{
+    font-size: 5rem;
+    position: relative;
+    animation: sec-home-Span-Hide 1.5s ease-in-out 1.7s 1 normal both,
+    sec-home-ToLeft 1s ease-in-out 3.5s normal both;
+}
+#sec-home span.name{
+    font-size: 4rem;
+    animation: sec-home-Span-Bottom 1.5s cubic-bezier(0.18, 0.68, 0.63, 0.38) 1.7s 1 normal both,
+    sec-home-ToLeft 1s ease-in-out 3.5s normal both;
+}
+#sec-home span.name:hover{
+    text-transform: uppercase;
+}
+#sec-home p{
+    width: 50%;
+    position: absolute;
+    animation: sec-home-Span-Right 1.5s ease-in-out 3.6s 1 normal both;
+}
+@keyframes sec-home-Image {
+    from{
+        height: 0;
+    }
+    to{
+        height: 350px;
+    }
+}
+@keyframes sec-home-Span-Hide{
+    from{
+        visibility: hidden;
+        bottom: -200px;
+    }
+    20%{
+        visibility: visible;
+    }
+    100%{
+        bottom: -35px;
+    }
+}
+@keyframes sec-home-Span-Bottom{
+    from{
+        top: -150px;
+        z-index: -1;
+        visibility: hidden;
+        transform: scale(0.5);
+    }
+    10%{
+        top: -150px;
+        z-index: -1;
+        transform: scale(0.6);
+        visibility: visible;
+    }
+    40%{
+        top: -25px;
+        z-index: -1;
+    }
+    70%{
+        top: -75px;
+        transform: scale(0.7);
+        z-index: 0;
+    }
+    100%{
+        top: -100px;
+        transform: scale(1.1);
+    }
+}
+@keyframes sec-home-Span-Right{
+    from{
+        right: -100%;
+    }
+    to{
+        right: 5%;
+    }
+}
+@keyframes sec-home-ToLeft{
+    from{
+        right: 0;
+    }
+    to{
+        right: 35%;
+    }
+}

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner:wght@600&family=Kdam+Thmor+Pro&family=Oswald&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /*font-family: 'Edu QLD Beginner', cursive;*/
+  color: azure;
+  /*font-family: 'Kdam Thmor Pro', sans-serif;*/
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  /* height: 100vh; */
+  width: 100vw;
+  background: linear-gradient( #012018, #060022, #00121a);
+}
+header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 2px dotted white;
+}
+header .image{
+  position: absolute;
+  left: 40px;
+  top: 25%;
+  height: 75px;
+  width: 75px;
+  clip-path: circle();
+  transition: transform 0.65s cubic-bezier(0.17, 0.26, 0.29, 0.93),
+              width 0.65s cubic-bezier(0.17, 0.26, 0.29, 0.93),
+              height 0.65s cubic-bezier(0.17, 0.26, 0.29, 0.93);
+}
+header .image.sect-home{
+  height: 350px;
+  width: 350px;
+  transform: translate(-10px, 50%);
+}
+header .image img{
+  height: inherit;
+  margin: auto;
+}
+header .navbar{
+  width: 100%;
+  padding: 0px 5%;
+}
+header .navbar ul{
+  display: flex;
+	justify-content: flex-end;
+	align-items: stretch;
+}
+header .navbar ul li{
+  list-style: none;
+  position: relative;
+  margin-left: 25px;
+  transition: 0.5s all ease-in-out;
+}
+header .navbar ul li a{
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px 25px;
+}
+header .navbar ul li:hover,
+header .navbar ul li.active{
+  font-weight: 900;
+}
+/* Container */
+#container{
+  /* overflow: hidden; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 100%;
+  width: 100%;
+}
+h1{
+  font-size: 5em;
+}
+h2{
+  font-size: 2em;
+}
+#container section{
+  /* padding: 50px; */
+  scroll-padding-top: 65px;
+  border: 2px dashed cornflowerblue;
+  width: 100vw;
+  height: 100vh;
+}
+#sec-home{
+  padding-left: 150px;
+}
+#sec-home h1{
+  animation: starH1 1s ease-out 0s 1 normal both;
+}
+#sec-home p{
+  margin-left: 350px;
+  text-align: justify;
+  animation: starPHome 2s both;
+}
+
+@keyframes starPHome {
+  from{
+    margin-left: -300%;
+  }
+  to{
+    margin-left: 350px;
+  }
+}
+@keyframes starH1 {
+  from{
+    margin-top: -300%;
+  }
+  to{
+    margin-top: 0;
+  }
+}
+
+/* ss */
+input, textarea{
+  background-color: rgba(0, 153, 255, 0.274);
+  outline: none;
+  border: 0;
+  padding: 10px;
+  border-bottom: 2px solid rgb(0, 153, 255);
+}

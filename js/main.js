@@ -2,13 +2,15 @@ const navBtns = document.querySelectorAll('.navbar ul li a');
 const imagePerfil = document.getElementById('image');
 const sec_skills = document.querySelector('#sec-skills .grid');
 
-const skill_img = ['html','css','js','react','php','mysql','c-sharp'];
+const skill_img = ['html','css','js','react','php','mysql','c-sharp',
+'excel','word','powerpoint'];
 
 skill_img.forEach(strLogo => {
     var skill = document.createElement('div');
     var imgLogo = document.createElement('img');
     skill.classList.add('skill');
     imgLogo.setAttribute('src', 'img/' + strLogo + '-logo.png');
+    imgLogo.setAttribute('alt', strLogo + '-logo');
     skill.appendChild(imgLogo);
     sec_skills.appendChild(skill);
 });

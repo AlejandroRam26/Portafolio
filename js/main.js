@@ -31,10 +31,14 @@ navBtns.forEach(btn => {
         }
     })
 });
-
+for (let i = 0; i < document.querySelectorAll('#container section').length; i++) {
+    const element = document.querySelectorAll('#container section')[i];
+    element.style.setProperty('--num-section', i);
+    
+}
 const observer = new IntersectionObserver((entries) =>{
     entries.forEach((entry) =>{
-        console.log(entry);
+        // console.log(entry.target);
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
         } else {

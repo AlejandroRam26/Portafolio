@@ -18,7 +18,7 @@ body{
 header{
   width: 100vw;
   position: fixed;
-  background-color: #222;
+  background-color: transparent;
 }
 header .navbar{
   width: 100%;
@@ -54,6 +54,8 @@ header .navbar ul li.active{
   /* scroll-snap-type: y mandatory; */
   overflow-y: scroll;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 section{
   z-index: -1;
@@ -65,8 +67,51 @@ section{
   padding: 20px;
   padding-top: 85px;
   scroll-snap-align: start;
-  height: 100vh;
+  min-height: 100vh;
   min-width: 100vw;
+  /* border: 2px dashed coral; */
+}
+.path-cococ{
+  background: crimson;
+  height: 200px;
+  width: 200px;
+  clip-path: polygon(100% 0, 0 0, 7% 24%, 24% 34%, 21% 55%, 45% 48%, 51% 70%, 78% 65%, 100% 100%);
+}
+section::after,
+section::before{
+  content: '';
+  --height: 190px;
+  --width-top: 0.6;
+  margin: 0;
+  clip-path: polygon(100% 0, 0 0, 7% 24%, 24% 34%, 21% 55%, 45% 48%, 51% 70%, 78% 65%, 100% 100%);
+  position: absolute;
+  background: inherit;
+}
+section::before{
+  top: 0;
+  right: 0;
+  width: calc(100% * var(--width-top));
+  height: calc(var(--height) * var(--width-top));
+}
+section::after{
+  transform: rotateZ(180deg);
+  height: calc(var(--height) * (1 - var(--width-top)));
+  width: calc(100% * (1 - var(--width-top)));
+  left: 0;
+  bottom: 0;
+}
+section:nth-child(1)::before{
+  display: none;
+}
+section:nth-child(odd),
+section:nth-child(even)::after,
+section:nth-child(even)::before{
+  background: hsl(var(--hue-Primary), var(--saturation), var(--lightness-dark-4));
+}
+section:nth-child(even),
+section:nth-child(odd)::after,
+section:nth-child(odd)::before{
+  background: hsl(var(--hue-Primary), var(--saturation), var(--lightness-dark-2));
 }
 img{
   height: 55px;
@@ -77,14 +122,14 @@ h2{
 }
 .hidden{
   opacity: 1;
-  filter: blur(5px);
-  transform: translateX(-100%);
+  /* filter: blur(5px); */
+  /* left: 50vh; */
   transition: all 0.7s;
   transition-delay: 0s;
 }
 .show{
   opacity: 1;
-  transform: translateX(0);
+  left: 0vh;
   filter: blur(0);
 }
 /* Scrollbar */

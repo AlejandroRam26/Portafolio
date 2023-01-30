@@ -3,19 +3,21 @@ Crimson: hsl(348, 83%, 47%)
 Orange: hsl(39, 100%, 50%));}
 */
 :root{
-    --hue-Primary:190;
-    --saturation: 3%;
+    --Primary-color:hsl(220, 83%, 47%);
+    --hue-Primary:220;
+    --saturation: 83%;
     --lightness-center:47%;
-    --lightness-light:calc(var(--lightness-center) + 10%);
-    --lightness-light-2:calc(var(--lightness-center) + 20%);
-    --lightness-light-3:calc(var(--lightness-center) + 30%);
-    --lightness-light-4:calc(var(--lightness-center) + 40%);
-    --lightness-light-5:calc(var(--lightness-center) + 50%);
-    --lightness-dark:calc(var(--lightness-center) - 10%);
-    --lightness-dark-2:calc(var(--lightness-center) - 20%);
-    --lightness-dark-3:calc(var(--lightness-center) - 30%);
-    --lightness-dark-4:calc(var(--lightness-center) - 40%);
-    --lightness-dark-5:calc(var(--lightness-center) - 50%);
+    --grade-lightness: 10%;
+    --lightness-light:calc(var(--lightness-center) + var(--grade-lightness));
+    --lightness-light-2:calc(var(--lightness-center) + var(--grade-lightness) * 2);
+    --lightness-light-3:calc(var(--lightness-center) + var(--grade-lightness) * 3);
+    --lightness-light-4:calc(var(--lightness-center) + var(--grade-lightness) * 4);
+    --lightness-light-5:calc(var(--lightness-center) + var(--grade-lightness) * 5);
+    --lightness-dark:calc(var(--lightness-center) - var(--grade-lightness));
+    --lightness-dark-2:calc(var(--lightness-center) - var(--grade-lightness) * 2);
+    --lightness-dark-3:calc(var(--lightness-center) - var(--grade-lightness) * 3);
+    --lightness-dark-4:calc(var(--lightness-center) - var(--grade-lightness) * 4);
+    --lightness-dark-5:calc(var(--lightness-center) - var(--grade-lightness) * 5);
     --hue-Analog1: calc(var(--hue-Primary) - 30);
     --hue-Analog2: calc(var(--hue-Analog1) - 300);
     /*

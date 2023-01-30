@@ -70,6 +70,10 @@ section{
   min-height: 100vh;
   min-width: 100vw;
   /* border: 2px dashed coral; */
+  --count: 5;
+  --grade-lightness-section: calc( (var(--lightness-dark) - var(--lightness-dark-4)) / var(--count));
+  --lightness-section: calc(var(--num-section) * var(--grade-lightness-section));
+  background: hsl(var(--hue-Primary), var(--saturation), calc(var(--lightness-dark-4) + var(--lightness-section)));
 }
 .path-cococ{
   background: crimson;
@@ -100,10 +104,11 @@ section::after{
   left: 0;
   bottom: 0;
 }
-section:nth-child(1)::before{
+section:nth-child(1)::before,
+section:last-child::after{
   display: none;
 }
-section:nth-child(odd),
+/*section:nth-child(odd),
 section:nth-child(even)::after,
 section:nth-child(even)::before{
   background: hsl(var(--hue-Primary), var(--saturation), var(--lightness-dark-4));
@@ -112,6 +117,16 @@ section:nth-child(even),
 section:nth-child(odd)::after,
 section:nth-child(odd)::before{
   background: hsl(var(--hue-Primary), var(--saturation), var(--lightness-dark-2));
+}*/
+section::before{
+  --lightness-section: calc((var(--num-section) - 1) * var(--grade-lightness-section));
+  /* background: hsl(var(--hue-Primary), var(--saturation), calc(var(--lightness-center) + (var(--grade-lightness) * (var(--num-section) - 1)))); */
+  background: hsl(var(--hue-Primary), var(--saturation), calc(var(--lightness-dark-4) + var(--lightness-section)));
+}
+section::after{
+  --lightness-section: calc((var(--num-section) + 1) * var(--grade-lightness-section));
+  background: hsl(var(--hue-Primary), var(--saturation), calc(var(--lightness-dark-4) + var(--lightness-section)));
+  /* background: hsl(var(--hue-Primary), var(--saturation), calc(var(--lightness-center) + (var(--grade-lightness) * (var(--num-section) + 1)))); */
 }
 img{
   height: 55px;

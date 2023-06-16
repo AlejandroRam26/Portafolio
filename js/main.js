@@ -5,7 +5,7 @@ const sections = document.querySelectorAll('#container section');
 const skill_img = ['html','css','js','react','php','mysql','c-sharp',
 'excel','word','powerpoint'];
 const skills = [
-    {skill: 'HTML', value: 70, img: 'img/html-logo.png'},
+    {skill: 'HTML', value: 81, img: 'img/html-logo.png'},
     {skill: 'CSS', value: 76, img: 'img/css-logo.png'},
     {skill: 'Js', value: 56, img: 'img/js-logo.png'},
     {skill: 'React', value: 40, img: 'img/react-logo.png'},
@@ -14,35 +14,31 @@ const skills = [
     {skill: 'C#', value: 89, img: 'img/c-sharp-logo.png'},
     {skill: 'Excel', value: 90, img: 'img/excel-logo.png'},
     {skill: 'Word', value: 87, img: 'img/word-logo.png'},
-    {skill: 'PowerPoint', value: 95, img: 'img/powerpoint-logo.png'}
+    {skill: 'PowerPoint', value: 95, img: 'img/powerpoint-logo.png'},
+    {skill: 'Administracion', value: 96, img: 'img/powerpoint-logo.png'},
+    {skill: 'Photshop', value: 73, img: 'img/powerpoint-logo.png'},
+    {skill: 'Estadistica', value: 82, img: 'img/powerpoint-logo.png'}
 ]
 
 
-skills.forEach(_skill => {
-    console.log(_skill);
+for (let id = 0; id < skills.length; id++) {
+    const _skill = skills[id];
     var skill = document.createElement('li');
+    skill.classList.add('noObs');
     var img = document.createElement('img');
     img.setAttribute('src', _skill.img);
     var h3 = document.createElement('h3');
-    h3.innerText = _skill.skill;
+    h3.innerText = _skill.skill + ' ' + _skill.value + '%';
     var bar = document.createElement('span');
-    var barValue = document.createElement('span');
     bar.classList.add('bar');
-    barValue.classList.add('value');
     skill.style.setProperty('--value-bar', _skill.value + '%');
-    barValue.style.setProperty('--value-bar', _skill.value + '%');
-    bar.appendChild(barValue);
+    skill.style.setProperty('--id-skill', id);
     skill.appendChild(img);
     skill.appendChild(h3);
     skill.appendChild(bar);
+    sec_skills.style.setProperty('--count-skills', skills.length)
     sec_skills.appendChild(skill);
-    // var imgLogo = document.createElement('img');
-    // skill.classList.add('skill');
-    // imgLogo.setAttribute('src', 'img/' + strLogo + '-logo.png');
-    // imgLogo.setAttribute('alt', strLogo + '-logo');
-    // skill.appendChild(imgLogo);
-    // sec_skills.appendChild(skill);
-});
+}
 
 navBtns.forEach(btn => {
     btn.addEventListener('click', (e)=>{
@@ -69,7 +65,6 @@ for (let i = 0; i < sections.length; i++) {
 }
 const observer = new IntersectionObserver((entries) =>{
     entries.forEach((entry) =>{
-        // console.log(entry.target);
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
         } else {
@@ -77,22 +72,29 @@ const observer = new IntersectionObserver((entries) =>{
         }
     });
 }, {
-    threshold: 0.01
+    rootMargin: '200px',
+    threshold: [0, .25, .5, .75, 1]
 });
-// const SectionDivs = (entries, ovserbador) => {
-//     // console.clear();
-//     entries.forEach((entry) =>{
-//         if (entry.isIntersecting) {
-//             entry.target.classList.remove('hidden');
-//         } else {
-//             entry.target.classList.add('hidden');
-//         }
-//     });
-// };
-// const observer = new IntersectionObserver(SectionDivs, {
-//     root: null,
-//     rootMargin: '0px',
-//     threshold: 0.1
-// });
+const observeWindow = new IntersectionObserver((elements) => {
+    console.log(elements);
+    elements.forEach((el) => {
+        const element = el.target;
+        if (el.intersectionRatio > 0) {
+            element.classList.add('observed');
+            element.style.animation = 'StartFromLeft 0.7s ease 0.2s both';
+        } else {
+            element.classList.remove('observed');
+            // element.style.animation = 'none';
+            // element.style.setProperty('animation', '');
+            // element.style.removeProperty('animation');
+        }
+    })
+},{
+    // root: document.getElementById('sec-skills'),
+    rootMargin: '-65px 0px -65px 0px',
+    threshold: 1
+});
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+document.querySelectorAll('#sec-skills .grid li').forEach((li) => observeWindow.observe(li));
+console.log(observeWindow);

@@ -12,7 +12,6 @@
 }
 #sec-skills .grid{
     width: 100%;
-    height: max-content;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-template-rows: auto auto;
@@ -29,45 +28,104 @@
 /*#sec-skills .grid img{
     height: 100%;
 }*/
-.grid li{
+#sec-skills .grid li{
     list-style: none;
     display: flex;
     flex-direction: column;
     position: relative;
 }
-.grid li h3{
+#sec-skills .grid li h3{
     margin-left: 10px;
 }
-.grid li img{
+#sec-skills .grid li img{
     position: absolute;
     height: 25px;
     right: 10px;
     top: 0;
     width: fit-content;
 }
-.grid li span.bar{
+#sec-skills .grid li span.bar{
     height: 10px;
     width: 100%;
     background: transparent;
     backdrop-filter: brightness(0.7);
+    border-radius: 5px;
     overflow: hidden;
-    border-radius: 5px;
+    border: 0px solid white;
 }
-.grid li span.bar span.value{
+#sec-skills .grid li span.bar::after{
+    content: '';
     display: block;
-    background: red;
     height: 100%;
-    --value-bar: 10%;
-    width: var(--value-bar);
-    border-radius: 5px;
-    background: hsl(var(--hue-Primary), var(--saturation), var(--lightness-light));
-    animation: BarValue 3s;
+    background: hsl(calc(var(--hue-Primary) + (var(--id-skill) * (220 / var(--count-skills)))), var(--saturation), var(--lightness-light));
+    border-radius: inherit;
 }
-@keyframes BarValue {
+#sec-skills.hidden:not(.show) .grid li{
+    animation: none;
+    opacity: 0;
+}
+#sec-skills.show .grid li:not(.observed){
+    /* opacity: 0; */
+    transform: translateX(0vw);
+    /* animation: OffFromLeft 0.7s ease 0.2s both; */
+}
+#sec-skills.hidden .grid span.bar::after{
+    width: 0%;
+    animation: none;
+}
+#sec-skills.hidden .grid span.bar::after,
+#sec-skills.show .grid li span.bar::after{
+    width: 0%;
+    animation: OffBarValue 0.7s ease 0s both;
+}
+#sec-skills.show .grid li.observed{
+    border: 0px solid white;
+    /* transform: translateX(0vw); */
+    /* animation: StartFromLeft 0.7s ease 0.2s both; */
+}
+#sec-skills.show .grid li.observed span.bar::after{
+    width: var(--value-bar);
+    /* animation: BarValue 0.7s ease calc((var(--id-skill) * 0.2s) + 0.4s) both; */
+    animation: StartBarValue 0.7s ease .4s both;
+}
+@keyframes StartFromLeft {
+    0%{
+        transform: translateX(-100vw);
+    }
+    70%{
+        transform: translateX(10vw);
+    }
+    100%{
+        transform: translateX(0.1vw);
+    }
+}
+@keyframes StartBarValue {
     0%{
         width: 0%;
     }
+    50%{
+        width: 90%;
+    }
+    75%{
+        width: calc(var(--value-bar) * 0.9);
+    }
     100%{
         width: var(--value-bar);
+    }
+}
+@keyframes OffBarValue {
+    0%{
+        width: var(--value-bar);
+    }
+    100%{
+        width: 0%;
+    }
+}
+@keyframes OffFromLeft {
+    0%{
+        transform: translateX(0.1vw);
+    }
+    100%{
+        transform: translateX(-100vw);
     }
 }

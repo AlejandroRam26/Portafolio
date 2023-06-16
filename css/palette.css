@@ -3,10 +3,10 @@ Crimson: hsl(348, 83%, 47%)
 Orange: hsl(39, 100%, 50%));}
 */
 :root{
-    --Primary-color:hsl(220, 83%, 47%);
-    --hue-Primary:220;
+    --Primary-color:hsl(207, 83%, 47%);
+    --hue-Primary:207;
     --saturation: 83%;
-    --lightness-center:47%;
+    --lightness-center: 47%;
     --grade-lightness: 10%;
     --lightness-light:calc(var(--lightness-center) + var(--grade-lightness));
     --lightness-light-2:calc(var(--lightness-center) + var(--grade-lightness) * 2);

@@ -40,7 +40,9 @@ header .navbar ul li a{
   display: block;
   text-align: center;
   text-decoration: none;
+  height: 100%;
   padding: 15px 25px;
+  color: rgba(255, 255, 255, 0.26);
 }
 header .navbar ul li:hover,
 header .navbar ul li.active{
@@ -71,6 +73,7 @@ section{
   padding: 30px;
   /* padding-top: 85px; */
   scroll-snap-align: start;
+  z-index: 0;
   /* border: 2px dashed coral; */
   --count: 5;
   --grade-lightness-section: calc( (var(--lightness-dark) - var(--lightness-dark-4)) / var(--count));
@@ -138,10 +141,11 @@ h2{
   font-size: 3rem;
   color: crimson;
 }
+/*
 .hidden{
   opacity: 1;
-  /* filter: blur(5px); */
-  /* left: 50vh; */
+  filter: blur(5px);
+  left: 50vh;
   transition: all 0.7s;
   transition-delay: 0s;
 }
@@ -150,6 +154,7 @@ h2{
   left: 0vh;
   filter: blur(0);
 }
+*/
 /* Scrollbar */
 ::-webkit-scrollbar{
   background: transparent;
